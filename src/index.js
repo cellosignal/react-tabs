@@ -1,7 +1,9 @@
 import React from 'react';
 
-export default function Tabs() {
-  return (
-    <h1>tabs!</h1>
-  )
+export default class Tabs extends React.Component {
+  render() {
+    return (
+      <h1>tabs!</h1>
+    );
+  }
 }
