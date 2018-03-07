@@ -1,0 +1,31 @@
+{
+  "name": "accessible-react-tabs",
+  "version": "0.0.1",
+  "description": "Acessible react tabs that collapse into an accordion on mobile",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack --watch",
+    "build": "webpack"
+  },
+  "keywords": [
+    "React",
+    "Tabs",
+    "Accordion"
+  ],
+  "author": "Jamie Halvorson",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^16.2.0"
+  },
+  "devDependencies": {
+    "webpack-cli": "^2.0.10",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-env": "^1.6.1",
+    "webpack": "^4.1.1"
+  }
+}
