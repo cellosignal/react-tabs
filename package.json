@@ -7,7 +7,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "webpack --watch",
     "build": "webpack",
     "storybook": "start-storybook -p 6006",
@@ -41,6 +41,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "babel-root-slash-import": "^1.1.0",
+    "jest": "^22.4.2",
     "react-dom": "^16.2.0",
     "webpack": "^3.11.0",
     "webpack-cli": "^2.0.10"
