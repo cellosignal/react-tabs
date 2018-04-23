@@ -10,8 +10,8 @@ storiesOf('Tabs', module)
   .add('standard', () => (
     <Tabs>
       <Tab title="tab title">Hi</Tab>
-      <Tab title="tab title two">Hi</Tab>
-      <Tab title="tab title three">Hi</Tab>
+      <Tab title="tab title two">Hello</Tab>
+      <Tab title="tab title three">Goodbye</Tab>
     </Tabs>
   ));
 

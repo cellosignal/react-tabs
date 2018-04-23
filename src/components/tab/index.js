@@ -1,19 +1,14 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
 import { func, number } from 'prop-types';
 import cx from 'classnames';
 
-export default class Tab extends PureComponent {
-  handleClick = (e) => {
-    e.preventDefault();
-    this.props.onClick(this.props.tabIndex);
-  }
-
+export default class Tab extends Component {
   render() {
-    const { title, tabIndex , isActive} = this.props;
+    const { title, tabIndex, isActive} = this.props;
 
     return (
       <li>
-        <a onClick={e => this.handleClick(e)}>{title}</a>
+        <a onClick={() => this.props.onClick(tabIndex)}>{title}</a>
       </li>
     );
   }
