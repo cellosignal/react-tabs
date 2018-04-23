@@ -1,4 +1,4 @@
-![React Accessible Tabs by Signal](readme-header.jpg)
+![React Accessible Tabs by Signal](images/readme-header.jpg)
 
 **Project to be moved to GitHub**
 
@@ -12,7 +12,7 @@ This component uses the Context API, therefore there is a minimum requirement of
 
 ## Example
 
-![Desktop vs Mobile example](example.jpg)
+![Desktop vs Mobile example](images/example.jpg)
 
 ### Usage
 
