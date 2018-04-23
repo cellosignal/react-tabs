@@ -8,7 +8,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "start": "webpack --watch",
+    "dev": "webpack --watch",
     "build": "webpack",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
@@ -22,7 +22,7 @@
   "author": "Jamie Halvorson",
   "license": "ISC",
   "dependencies": {
-    "react": "^16.2.0"
+    "react": "^16.3.2"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^3.3.15",
@@ -44,6 +44,7 @@
     "jest": "^22.4.2",
     "react-dom": "^16.2.0",
     "webpack": "^3.11.0",
-    "webpack-cli": "^2.0.10"
+    "webpack-cli": "^2.0.10",
+    "webpack-merge": "^4.1.2"
   }
 }
