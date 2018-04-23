@@ -1,5 +1,6 @@
 import React, { PureComponent, Fragment } from 'react';
 import { arrayOf, shape, string } from 'prop-types';
+import Provider from '../../provider';
 
 export default class Tabs extends PureComponent {
   state = {
@@ -30,15 +31,20 @@ export default class Tabs extends PureComponent {
     const { activeTab } = this.state;
 
     return React.Children.map(children, (child) => {
-      return (
-        <Fragment>
-          <button>Press Me!</button>
-          {
-            children[activeTab] &&
-            children[activeTab].props.children
-          }
-        </Fragment>
-      );
+      if (children[activeTab]) {
+        return (
+          <Fragment>
+            <button>Press Me!</button>
+            {
+              console.log(children[activeTab])
+            }
+            {
+              children[activeTab] &&
+              children[activeTab].props.children
+            }
+          </Fragment>
+        );
+      }
     });
 
     // if (children[activeTab]) {
@@ -54,14 +60,16 @@ export default class Tabs extends PureComponent {
 
   render() {
     return (
-      <div>
-        <ul>
-          {this.renderTabs()}
-        </ul>
-        <div>
-          {this.renderActiveTabs()}
-        </div>
-      </div>
+      <Provider>
+        <Fragment>
+          <ul>
+            {this.renderTabs()}
+          </ul>
+          <div>
+            {this.renderActiveTabs()}
+          </div>
+        </Fragment>
+      </Provider>
     );
   }
 }

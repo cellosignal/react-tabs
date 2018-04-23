@@ -42,7 +42,7 @@
     "babel-preset-stage-0": "^6.24.1",
     "babel-root-slash-import": "^1.1.0",
     "jest": "^22.4.2",
-    "react-dom": "^16.2.0",
+    "react-dom": "^16.3.2",
     "webpack": "^3.11.0",
     "webpack-cli": "^2.0.10",
     "webpack-merge": "^4.1.2"

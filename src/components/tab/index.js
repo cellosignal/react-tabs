@@ -3,7 +3,6 @@ import { func, number } from 'prop-types';
 import cx from 'classnames';
 
 export default class Tab extends PureComponent {
-
   handleClick = (e) => {
     e.preventDefault();
     this.props.onClick(this.props.tabIndex);
