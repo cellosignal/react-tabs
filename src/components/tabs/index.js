@@ -4,6 +4,11 @@ import Provider from '../../provider';
 import { Context } from '../../contants';
 
 export default class Tabs extends Component {
+  // Renders the interactable buttons that sit at the top of the component
+  // These can only be interacted with on tablet and desktop devices.
+
+  // TODO:
+  // - Accessibility
   renderTabs = () => {
     const { children } = this.props;
 
@@ -18,6 +23,14 @@ export default class Tabs extends Component {
     ));
   }
 
+  // This renders the active tab to be displayed. On desktop devices the
+  // button is hidden, the user instead interacts with the tabs at the
+  // top of the component (`renderTabs()`)
+
+  // TODO:
+  // - Explore the mobile functionality, I pressume all tabs can be open
+  //   at the same time since it becomes an accordion?
+  // - Accessibility
   renderActiveTabs = () => {
     const { children } = this.props;
 
@@ -25,14 +38,20 @@ export default class Tabs extends Component {
       return (
         <Context.Consumer>
         {
-          (context) => (
-            <div hidden={context.state.activeTabIndex !== index}>
-              {
-                children[context.state.activeTabIndex] &&
-                children[context.state.activeTabIndex].props.children
-              }
-            </div>
-          )
+          (context) => {
+            const tabIndex = context.state.activeTabIndex;
+            return (
+              <div hidden={tabIndex !== index}>
+                <button onClick={() => context.handleClick(tabIndex)}>
+                  {children[tabIndex].props.title}
+                </button>
+                {
+                  children[tabIndex] &&
+                  children[tabIndex].props.children
+                }
+              </div>
+            )
+          }
         }
         </Context.Consumer>
       );
