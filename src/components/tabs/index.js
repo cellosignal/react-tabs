@@ -4,9 +4,18 @@ import Provider from '../../provider';
 import { Context } from '../../contants';
 
 export default class Tabs extends Component {
+
+  static defaultStyles = {
+    tabsRow: {
+      listStyleType: 'none',
+    },
+    wrapper: {
+      backgroundColor: 'red',
+    }
+  };
+
   // Renders the interactable buttons that sit at the top of the component
   // These can only be interacted with on tablet and desktop devices.
-
   // TODO:
   // - Accessibility
   renderTabs = () => {
@@ -26,7 +35,8 @@ export default class Tabs extends Component {
   // This renders the active tab to be displayed. On desktop devices the
   // button is hidden, the user instead interacts with the tabs at the
   // top of the component (`renderTabs()`)
-
+  // Instead of only rendering a single tab, we render them all and pass the
+  // hidden attribute to control its visibility.
   // TODO:
   // - Explore the mobile functionality, I pressume all tabs can be open
   //   at the same time since it becomes an accordion?
@@ -42,7 +52,10 @@ export default class Tabs extends Component {
             const tabIndex = context.state.activeTabIndex;
             return (
               <div hidden={tabIndex !== index}>
-                <button onClick={() => context.handleClick(tabIndex)}>
+                <button
+                  className="sig-tabs__toggle"
+                  onClick={() => context.handleClick(tabIndex)}
+                >
                   {children[tabIndex].props.title}
                 </button>
                 {
@@ -62,11 +75,16 @@ export default class Tabs extends Component {
     return (
       <Provider>
         <Fragment>
-          <ul>
-            {this.renderTabs()}
-          </ul>
-          <div>
-            {this.renderActiveTabs()}
+          <div
+            className={['sig-tabs', this.props.className || ''].join(' ')}
+            style={{...Tabs.defaultStyles.wrapper, ...this.props.style}}
+          >
+            <ul style={{...Tabs.defaultStyles.tabsRow}}>
+              {this.renderTabs()}
+            </ul>
+            <div>
+              {this.renderActiveTabs()}
+            </div>
           </div>
         </Fragment>
       </Provider>

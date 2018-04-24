@@ -3,11 +3,20 @@ import { func, number } from 'prop-types';
 import cx from 'classnames';
 
 export default class Tab extends Component {
+  static defaultStyles = {
+    tab: {
+      display: 'inline-block'
+    }
+  };
+
   render() {
     const { title, tabIndex, isActive} = this.props;
 
     return (
-      <li>
+      <li
+        style={{...Tab.defaultStyles.tab, ...this.props.style}}
+        className={['sig-tab', this.props.className || ''].join(' ')}
+      >
         <a onClick={() => this.props.onClick(tabIndex)}>{title}</a>
       </li>
     );
