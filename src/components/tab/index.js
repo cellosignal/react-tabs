@@ -5,7 +5,8 @@ import cx from 'classnames';
 export default class Tab extends Component {
   static defaultStyles = {
     tab: {
-      display: 'inline-block'
+      display: 'inline-block',
+      padding: '0 15px',
     }
   };
 

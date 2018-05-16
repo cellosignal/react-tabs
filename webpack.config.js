@@ -1,4 +1,5 @@
 const path = require('path');
+const FlowWebpackPlugin = require('flow-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
@@ -24,5 +25,8 @@ module.exports = {
   },
   externals: {
     'react': 'commonjs react'
-  }
+  },
+  plugins: [
+    new FlowWebpackPlugin(),
+  ]
 };
