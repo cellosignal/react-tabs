@@ -29,6 +29,15 @@ export default class Tabs extends Component {
     }
   }
 
+  static activeStyles = {
+    maxHeight: '9999px'
+  }
+
+  static disabledStyles = {
+    maxHeight: 0,
+    overflow: 'hidden'
+  }
+
   componentWillMount() {
     this.checkMobile(this.props);
   }
@@ -67,10 +76,6 @@ export default class Tabs extends Component {
   // top of the component (`renderTabs()`)
   // Instead of only rendering a single tab, we render them all and pass the
   // hidden attribute to control its visibility.
-  // TODO:
-  // - Explore the mobile functionality, I pressume all tabs can be open
-  //   at the same time since it becomes an accordion?
-  // - Accessibility
   renderActiveTabs = () => {
     const { children } = this.props;
 
@@ -80,19 +85,22 @@ export default class Tabs extends Component {
         {
           (context) => {
             const tabIndex = context.state.activeTabIndex;
+            const active = tabIndex === index;
             return (
-              <div hidden={tabIndex !== index}>
+              <div hidden={!this.isMobile && !active}>
                 <button
                   className="sig-tabs__toggle"
                   style={{...this.isMobile ? Tabs.mobileStyles.button : Tabs.defaultStyles.button}}
-                  onClick={() => context.handleClick(tabIndex)}
+                  onClick={() => context.handleClick(index)}
                 >
-                  {children[tabIndex].props.title}
+                  {children[index].props.title}
                 </button>
+                <div style={active ? Tabs.activeStyles : Tabs.disabledStyles}>
                 {
                   children[tabIndex] &&
                   children[tabIndex].props.children
                 }
+                </div>
               </div>
             )
           }
@@ -110,9 +118,12 @@ export default class Tabs extends Component {
             className={['sig-tabs', this.props.className || ''].join(' ')}
             style={{...Tabs.defaultStyles.wrapper, ...this.props.style}}
           >
+          {
+            !this.isMobile &&
             <ul style={{...Tabs.defaultStyles.tabsRow}}>
               {this.renderTabs()}
             </ul>
+          }
             <div>
               {this.renderActiveTabs()}
             </div>
