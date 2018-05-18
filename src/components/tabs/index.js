@@ -12,6 +12,7 @@ export default class Tabs extends Component {
 
     this.state = {
       isMobile: false,
+      prevSize: '',
     }
   }
 
@@ -53,12 +54,14 @@ export default class Tabs extends Component {
     );
   }
 
+  // If user goes from mobile with all tabs closed we want to reset
+  // all tabs
   checkMobile = (props) => {
     const { mobile } = props;
     const mobileBp = mobile ? mobile : '768';
     this.setState({
       isMobile: window.matchMedia(`(max-width: ${mobileBp}px)`).matches
-    })
+    });
   }
 
   // Renders the interactable buttons that sit at the top of the component

@@ -2,8 +2,8 @@
 
 **Project to be moved to GitHub**
 
-| Maintained by |
-|---------------|
+| Maintained by   |
+|-----------------|
 | Jamie Halvorson |
 
 Declaritive, accessible tabs in React that collapse into accordions on mobile.
@@ -14,7 +14,7 @@ This component uses the Context API, therefore there is a minimum requirement of
 
 ![Desktop vs Mobile example](images/example.jpg)
 
-### Usage
+## Usage
 
 ```javascript
 export default function myComponent() {
@@ -37,8 +37,9 @@ export default function myComponent() {
 We use storybook for component development, to get up and running follow these steps:
 
 1. Clone the repository, `cd` into the root and run `npm install`
-2. In the root run `npm run dev`
-3. Open a new tab in your terminal, `cd` into the project and run `npm run storybook`
+2. Open two terminal windows, in the first window:
+3. cd into the root of the project run `npm run dev`, this will start webpack
+4. In the second window, `cd` into the project and run `npm run storybook`
 
 
 ## Contributing
