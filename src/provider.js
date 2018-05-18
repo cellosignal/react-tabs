@@ -13,6 +13,9 @@ export default class Provider extends Component {
       <Context.Provider
         value={{
           state: this.state,
+          handleMobileClick: (tabIndex) => this.setState( prevState => ({
+            activeTabIndex: prevState.activeTabIndex === tabIndex ? null : tabIndex,
+          })),
           handleClick: (tabIndex) => this.setState({
             activeTabIndex: tabIndex,
           })

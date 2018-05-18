@@ -97,10 +97,15 @@ export default class Tabs extends Component {
                 <button
                   className="sig-tabs__toggle"
                   style={{...this.state.isMobile ? Tabs.mobileStyles.button : Tabs.defaultStyles.button}}
-                  onClick={() => context.handleClick(index)}
+                  onClick={() => context.handleMobileClick(index)}
                 >
                   {children[index].props.title}
                 </button>
+                {
+                  !active
+                  ? <p>Closed</p>
+                  : <p>Open</p>
+                }
                 <div style={active ? Tabs.activeStyles : Tabs.disabledStyles}>
                 {
                   children[tabIndex] &&
