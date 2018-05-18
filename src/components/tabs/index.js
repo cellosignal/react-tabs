@@ -9,6 +9,10 @@ export default class Tabs extends Component {
 
   constructor(props) {
     super(props);
+
+    this.state = {
+      isMobile: false,
+    }
   }
 
   static defaultStyles = {
@@ -45,14 +49,16 @@ export default class Tabs extends Component {
   componentDidMount() {
     window.addEventListener(
       'resize',
-      debounce((e) => this.checkMobile(this.props), 100)
+      debounce((e) => this.checkMobile(this.props), 66)
     );
   }
 
   checkMobile = (props) => {
     const { mobile } = props;
     const mobileBp = mobile ? mobile : '768';
-    this.isMobile = window.matchMedia(`(max-width: ${mobileBp}px)`).matches;
+    this.setState({
+      isMobile: window.matchMedia(`(max-width: ${mobileBp}px)`).matches
+    })
   }
 
   // Renders the interactable buttons that sit at the top of the component
@@ -71,11 +77,11 @@ export default class Tabs extends Component {
     ));
   }
 
-  // This renders the active tab to be displayed. On desktop devices the
-  // button is hidden, the user instead interacts with the tabs at the
-  // top of the component (`renderTabs()`)
-  // Instead of only rendering a single tab, we render them all and pass the
-  // hidden attribute to control its visibility.
+  // This renders the active tab to be displayed. On desktop devices the button is hidden, the
+  // user instead interacts with the tabs at the top of the component (`renderTabs()`)
+  // Instead of only rendering a single tab, we render them all and pass the hidden attribute
+  // to control its visibility when on Desktop. When on mobile however we remove the hidden attribute
+  // and default to using classes for styling.
   renderActiveTabs = () => {
     const { children } = this.props;
 
@@ -87,10 +93,10 @@ export default class Tabs extends Component {
             const tabIndex = context.state.activeTabIndex;
             const active = tabIndex === index;
             return (
-              <div hidden={!this.isMobile && !active}>
+              <div hidden={!this.state.isMobile && !active}>
                 <button
                   className="sig-tabs__toggle"
-                  style={{...this.isMobile ? Tabs.mobileStyles.button : Tabs.defaultStyles.button}}
+                  style={{...this.state.isMobile ? Tabs.mobileStyles.button : Tabs.defaultStyles.button}}
                   onClick={() => context.handleClick(index)}
                 >
                   {children[index].props.title}
@@ -111,6 +117,7 @@ export default class Tabs extends Component {
   }
 
   render() {
+
     return (
       <Provider>
         <Fragment>
@@ -119,7 +126,7 @@ export default class Tabs extends Component {
             style={{...Tabs.defaultStyles.wrapper, ...this.props.style}}
           >
           {
-            !this.isMobile &&
+            !this.state.isMobile &&
             <ul style={{...Tabs.defaultStyles.tabsRow}}>
               {this.renderTabs()}
             </ul>

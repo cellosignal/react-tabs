@@ -17,7 +17,7 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['env']
+            presets: ['@babel/preset-env']
           }
         }
       }
@@ -27,6 +27,6 @@ module.exports = {
     'react': 'commonjs react'
   },
   plugins: [
-    new FlowWebpackPlugin(),
+    // new FlowWebpackPlugin(),
   ]
 };
