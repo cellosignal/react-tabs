@@ -1,7 +1,6 @@
 {
-  "presets": ["env", "stage-0", "react", "flow"],
+  "presets": ["env", "react","stage-0"],
   "plugins": [
-    "transform-decorators-legacy",
     "transform-decorators-legacy",
     "transform-class-properties",
     "babel-root-slash-import"
