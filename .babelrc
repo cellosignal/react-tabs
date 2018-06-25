@@ -2,6 +2,7 @@
   "presets": ["env", "stage-0", "react", "flow"],
   "plugins": [
     "transform-decorators-legacy",
+    "transform-decorators-legacy",
     "transform-class-properties",
     "babel-root-slash-import"
   ]
