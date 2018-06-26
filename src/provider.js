@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Context } from './contants';
+import { Context } from './constants';
 
-// The provider utilises the React 16.3 Context API to control
+// The provider uses the React 16.3 Context API to control
 // the state of the component, including the overarching functions.
 export default class Provider extends Component {
   state = {

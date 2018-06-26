@@ -2,7 +2,7 @@
 import React, { Component, Fragment } from 'react';
 import { arrayOf, shape, string } from 'prop-types';
 import Provider from '../../provider';
-import { Context } from '../../contants';
+import { Context } from '../../constants';
 import debounce from '../../helpers/debounce';
 
 export default class Tabs extends Component {
@@ -51,12 +51,11 @@ export default class Tabs extends Component {
   componentDidMount() {
     window.addEventListener(
       'resize',
-      debounce((e) => this.checkMobile(this.props), 66)
+      debounce(() => this.checkMobile(this.props), 66)
     );
   }
 
-  // If user goes from mobile with all tabs closed we want to reset
-  // all tabs
+  // If user goes from mobile with all tabs closed we want to reset all tabs
   checkMobile = (props) => {
     const { mobile } = props;
     const mobileBp = mobile ? mobile : '768';
