@@ -19,6 +19,7 @@ export default class Tabs extends Component {
   static defaultStyles = {
     tabsRow: {
       listStyleType: 'none',
+      paddingLeft: 0,
     },
     wrapper: {
       fontFamily: '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif',
@@ -74,7 +75,7 @@ export default class Tabs extends Component {
        {(context) => React.cloneElement(child, {
           onClick: context.handleClick,
           tabIndex: index,
-          isActive: index === context.state.activeTab,
+          isActive: index === context.state.activeTabIndex,
        })}
       </Context.Consumer>
     ));
@@ -127,7 +128,7 @@ export default class Tabs extends Component {
           >
           {
             !this.state.isMobile &&
-            <ul style={{...Tabs.defaultStyles.tabsRow}}>
+            <ul style={{...Tabs.defaultStyles.tabsRow}} className="sig-tabs">
               {this.renderTabs()}
             </ul>
           }
