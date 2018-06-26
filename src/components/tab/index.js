@@ -20,6 +20,7 @@ export default class Tab extends Component {
       <li
         style={{...Tab.defaultStyles.tab, ...isActive && Tab.defaultStyles.active, ...this.props.style}}
         className={['sig-tab', isActive ? 'sig-tab__active' : '', this.props.className || ''].join(' ')}
+        role="presentation"
       >
         <a onClick={() => this.props.onClick(tabIndex)}>{title}</a>
       </li>

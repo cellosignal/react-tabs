@@ -95,7 +95,11 @@ export default class Tabs extends Component {
           const tabIndex = context.state.activeTabIndex;
           const active = tabIndex === index;
           return (
-            <div hidden={!this.state.isMobile && !active}>
+            <section
+              hidden={!this.state.isMobile && !active}
+              role="tab"
+              tabIndex="-1"
+            >
               <button
                 className="sig-tabs__toggle"
                 style={{...this.state.isMobile ? Tabs.mobileStyles.button : Tabs.defaultStyles.button}}
@@ -109,7 +113,7 @@ export default class Tabs extends Component {
                 children[tabIndex].props.children
               }
               </div>
-            </div>
+            </section>
           )
         }
       }
@@ -127,13 +131,13 @@ export default class Tabs extends Component {
           >
           {
             !this.state.isMobile &&
-            <ul style={{...Tabs.defaultStyles.tabsRow}} className="sig-tabs">
+            <ul role="tablist" style={{...Tabs.defaultStyles.tabsRow}} className="sig-tabs">
               {this.renderTabs()}
             </ul>
           }
-            <div>
+            <Fragment>
               {this.renderActiveTabs()}
-            </div>
+            </Fragment>
           </div>
         </Fragment>
       </Provider>
