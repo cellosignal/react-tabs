@@ -8,6 +8,10 @@ export default class Provider extends Component {
     activeTabIndex: 0
   };
 
+  componentDidMount() {
+    this.panels = document.querySelectorAll('[id^="sigTabs"');
+  }
+
   render() {
     return (
       <Context.Provider
@@ -16,9 +20,27 @@ export default class Provider extends Component {
           handleMobileClick: (tabIndex) => this.setState( prevState => ({
             activeTabIndex: prevState.activeTabIndex === tabIndex ? null : tabIndex,
           })),
-          handleClick: (tabIndex) => this.setState({
-            activeTabIndex: tabIndex,
-          })
+          handleKeyPress: (e) => {
+            const { activeTabIndex } = this.state;
+        
+            // Work out which key the user is pressing and
+            // Calculate the new tab's index where appropriate
+            let dir = e.which === 37 ? activeTabIndex - 1 : e.which === 39 ? activeTabIndex + 1 : e.which === 40 ? 'down' : null;
+                
+            if (dir !== null) {
+              e.preventDefault();
+              // If the down key is pressed, move focus to the open panel,
+              // otherwise switch to the adjacent tab
+              dir === 'down' ? this.panels[activeTabIndex].focus() : dir ? this.setState({activeTabIndex: dir}) : void 0;
+            }
+          },
+          handleClick: (tabIndex, e) => {
+            e.preventDefault();
+
+            this.setState({
+              activeTabIndex: tabIndex,
+            });
+          }
         }}
       >
         {this.props.children}

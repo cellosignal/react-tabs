@@ -75,6 +75,7 @@ export default class Tabs extends Component {
           onClick: context.handleClick,
           tabIndex: index,
           isActive: index === context.state.activeTabIndex,
+          handleKeyPress: context.handleKeyPress,
        })}
       </Context.Consumer>
     ));
@@ -99,6 +100,7 @@ export default class Tabs extends Component {
               hidden={!this.state.isMobile && !active}
               role="tab"
               tabIndex="-1"
+              id={`sigTabs${index}`}
             >
               <button
                 className="sig-tabs__toggle"
