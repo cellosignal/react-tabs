@@ -22,7 +22,12 @@ export default class Tab extends Component {
         className={['sig-tab', isActive ? 'sig-tab__active' : '', this.props.className || ''].join(' ')}
         role="presentation"
       >
-        <a onClick={() => this.props.onClick(tabIndex)}>{title}</a>
+        <a
+          onClick={() => this.props.onClick(tabIndex)}
+          aria-selected={isActive}
+        >
+        {title}
+        </a>
       </li>
     );
   }
