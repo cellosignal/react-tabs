@@ -88,44 +88,36 @@ export default class Tabs extends Component {
   renderActiveTabs = () => {
     const { children } = this.props;
 
-    return React.Children.map(children, (child, index) => {
-      return (
-        <Context.Consumer>
-        {
-          (context) => {
-            const tabIndex = context.state.activeTabIndex;
-            const active = tabIndex === index;
-            return (
-              <div hidden={!this.state.isMobile && !active}>
-                <button
-                  className="sig-tabs__toggle"
-                  style={{...this.state.isMobile ? Tabs.mobileStyles.button : Tabs.defaultStyles.button}}
-                  onClick={() => context.handleMobileClick(index)}
-                >
-                  {children[index].props.title}
-                </button>
-                {
-                  !active
-                  ? <p>Closed</p>
-                  : <p>Open</p>
-                }
-                <div style={active ? Tabs.activeStyles : Tabs.disabledStyles}>
-                {
-                  children[tabIndex] &&
-                  children[tabIndex].props.children
-                }
-                </div>
+    return React.Children.map(children, (child, index) => (
+      <Context.Consumer>
+      {
+        (context) => {
+          const tabIndex = context.state.activeTabIndex;
+          const active = tabIndex === index;
+          return (
+            <div hidden={!this.state.isMobile && !active}>
+              <button
+                className="sig-tabs__toggle"
+                style={{...this.state.isMobile ? Tabs.mobileStyles.button : Tabs.defaultStyles.button}}
+                onClick={() => context.handleMobileClick(index)}
+              >
+                {children[index].props.title}
+              </button>
+              <div style={active ? Tabs.activeStyles : Tabs.disabledStyles}>
+              {
+                children[tabIndex] &&
+                children[tabIndex].props.children
+              }
               </div>
-            )
-          }
+            </div>
+          )
         }
-        </Context.Consumer>
-      );
-    });
+      }
+      </Context.Consumer>
+    )); 
   }
 
   render() {
-
     return (
       <Provider>
         <Fragment>
