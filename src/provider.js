@@ -10,6 +10,7 @@ export default class Provider extends Component {
 
   componentDidMount() {
     this.panels = document.querySelectorAll('[id^="sigTabs"');
+    this.tabs = document.querySelectorAll('a');
   }
 
   render() {
@@ -23,15 +24,26 @@ export default class Provider extends Component {
           handleKeyPress: (e) => {
             const { activeTabIndex } = this.state;
         
-            // Work out which key the user is pressing and
-            // Calculate the new tab's index where appropriate
-            let dir = e.which === 37 ? activeTabIndex - 1 : e.which === 39 ? activeTabIndex + 1 : e.which === 40 ? 'down' : null;
-                
+            let dir = e.which === 37 ? 'left' : e.which === 39 ? 'right' : e.which === 40 ? 'down' : null;
+
             if (dir !== null) {
               e.preventDefault();
-              // If the down key is pressed, move focus to the open panel,
-              // otherwise switch to the adjacent tab
-              dir === 'down' ? this.panels[activeTabIndex].focus() : dir ? this.setState({activeTabIndex: dir}) : void 0;
+              let moveBy = 0;
+              const count = this.panels.length - 1;
+
+              switch (dir) {
+                case 'left':
+                  moveBy = activeTabIndex > 0 ? activeTabIndex - 1 : count;
+                  break;
+              
+                default:
+                  moveBy = activeTabIndex < count ? activeTabIndex + 1 : 0;
+                  break;
+              }
+
+              this.tabs[moveBy].focus();
+              
+              dir === 'down' ? this.panels[activeTabIndex].focus() : this.setState({ activeTabIndex: moveBy });
             }
           },
           handleClick: (tabIndex, e) => {

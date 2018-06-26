@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { func, number } from 'prop-types';
-import cx from 'classnames';
 
 export default class Tab extends Component {
-
   static defaultStyles = {
     tab: {
       display: 'inline-block',
@@ -13,27 +11,6 @@ export default class Tab extends Component {
       borderBottom: '2px solid grey',
     }
   };
-
-  // componentDidMount() {
-  //   this.panels = document.querySelectorAll('[id^="sigTabs"');
-  // }
-
-  // handleKeyPress = (e) => {
-  //   const { tabIndex } = this.props;
-
-  //   // Work out which key the user is pressing and
-  //   // Calculate the new tab's index where appropriate
-  //   let dir = e.which === 37 ? tabIndex - 1 : e.which === 39 ? tabIndex + 1 : e.which === 40 ? 'down' : null;
-
-
-  //   if (dir !== null) {
-  //     e.preventDefault();
-  //     // If the down key is pressed, move focus to the open panel,
-  //     // otherwise switch to the adjacent tab
-  //     dir === 'down' ? this.panels[tabIndex].focus() : dir ? this.props.onClick(dir, e) : void 0;
-  //   }
-  // }
-
 
   render() {
     const { title, tabIndex, isActive } = this.props;
@@ -49,6 +26,7 @@ export default class Tab extends Component {
           aria-selected={isActive}
           href="#"
           onKeyDown={e => this.props.handleKeyPress(e)}
+          tabIndex={!isActive ? "-1" : "1"}
         >
         {title}
         </a>
