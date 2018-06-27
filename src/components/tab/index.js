@@ -26,7 +26,7 @@ export default class Tab extends Component {
           aria-selected={isActive}
           href="#"
           onKeyDown={e => this.props.handleKeyPress(e)}
-          tabIndex={!isActive ? "-1" : "1"}
+          tabIndex={!isActive ? "-1" : "0"}
         >
         {title}
         </a>
