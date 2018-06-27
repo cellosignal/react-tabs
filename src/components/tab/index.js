@@ -15,10 +15,12 @@ export default class Tab extends Component {
   render() {
     const { title, tabIndex, isActive } = this.props;
 
+    console.log('CLASS: ', this.props.activeClassName);
+
     return (
       <li
         style={{...Tab.defaultStyles.tab, ...isActive && Tab.defaultStyles.active, ...this.props.style}}
-        className={['sig-tab', isActive ? 'sig-tab__active' : '', this.props.className || ''].join(' ')}
+        className={['sig-tab', isActive ? ['sig-tab__active', this.props.activeClassName || ""].join(' ') : '', this.props.className || ''].join(' ')}
         role="presentation"
       >
         <a

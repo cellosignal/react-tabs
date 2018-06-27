@@ -87,7 +87,8 @@ export default class Tabs extends Component {
   // to control its visibility when on Desktop. When on mobile however we remove the hidden attribute
   // and default to using classes for styling.
   renderActiveTabs = () => {
-    const { children } = this.props;
+    const { children, contentClassName } = this.props;
+    console.log(contentClassName);
 
     return React.Children.map(children, (child, index) => (
       <Context.Consumer>
@@ -101,6 +102,7 @@ export default class Tabs extends Component {
               role="tab"
               tabIndex="-1"
               id={`sigTabs${index}`}
+              className={['sig-tabs__content', this.props.contentClassName || ''].join(' ')}
             >
               <button
                 className="sig-tabs__toggle"
@@ -133,7 +135,7 @@ export default class Tabs extends Component {
           >
           {
             !this.state.isMobile &&
-            <ul role="tablist" style={{...Tabs.defaultStyles.tabsRow}} className="sig-tabs">
+            <ul role="tablist" style={{...Tabs.defaultStyles.tabsRow}} className="sig-tabs__list">
               {this.renderTabs()}
             </ul>
           }
