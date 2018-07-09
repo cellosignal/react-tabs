@@ -71,12 +71,12 @@ export default class Tabs extends Component {
 
     return React.Children.map(children, (child, index) => (
       <Context.Consumer>
-       {(context) => React.cloneElement(child, {
+        {(context) => React.cloneElement(child, {
           onClick: context.handleClick,
           tabIndex: index,
           isActive: index === context.state.activeTabIndex,
           handleKeyPress: context.handleKeyPress,
-       })}
+        })}
       </Context.Consumer>
     ));
   }
@@ -88,41 +88,40 @@ export default class Tabs extends Component {
   // and default to using classes for styling.
   renderActiveTabs = () => {
     const { children, contentClassName } = this.props;
-    console.log(contentClassName);
 
     return React.Children.map(children, (child, index) => (
       <Context.Consumer>
-      {
-        (context) => {
-          const tabIndex = context.state.activeTabIndex;
-          const active = tabIndex === index;
-          return (
-            <section
-              hidden={!this.state.isMobile && !active}
-              role="tab"
-              tabIndex="-1"
-              id={`sigTabs${index}`}
-              className={['sig-tabs__content', this.props.contentClassName || ''].join(' ')}
-            >
-              <button
-                className="sig-tabs__toggle"
-                style={{...this.state.isMobile ? Tabs.mobileStyles.button : Tabs.defaultStyles.button}}
-                onClick={() => context.handleMobileClick(index)}
+        {
+          (context) => {
+            const tabIndex = context.state.activeTabIndex;
+            const active = tabIndex === index;
+            return (
+              <section
+                hidden={!this.state.isMobile && !active}
+                role="tab"
+                tabIndex="-1"
+                id={`sigTabs${index}`}
+                className={['sig-tabs__content', this.props.contentClassName || ''].join(' ')}
               >
-                {children[index].props.title}
-              </button>
-              <div style={active ? Tabs.activeStyles : Tabs.disabledStyles}>
-              {
-                children[tabIndex] &&
-                children[tabIndex].props.children
-              }
-              </div>
-            </section>
-          )
+                <button
+                  className="sig-tabs__toggle"
+                  style={{ ...this.state.isMobile ? Tabs.mobileStyles.button : Tabs.defaultStyles.button }}
+                  onClick={() => context.handleMobileClick(index)}
+                >
+                  {children[index].props.title}
+                </button>
+                <div style={active ? Tabs.activeStyles : Tabs.disabledStyles}>
+                  {
+                    children[tabIndex] &&
+                    children[tabIndex].props.children
+                  }
+                </div>
+              </section>
+            )
+          }
         }
-      }
       </Context.Consumer>
-    )); 
+    ));
   }
 
   render() {
@@ -131,14 +130,14 @@ export default class Tabs extends Component {
         <Fragment>
           <div
             className={['sig-tabs', this.props.className || ''].join(' ')}
-            style={{...Tabs.defaultStyles.wrapper, ...this.props.style}}
+            style={{ ...Tabs.defaultStyles.wrapper, ...this.props.style }}
           >
-          {
-            !this.state.isMobile &&
-            <ul role="tablist" style={{...Tabs.defaultStyles.tabsRow}} className="sig-tabs__list">
-              {this.renderTabs()}
-            </ul>
-          }
+            {
+              !this.state.isMobile &&
+              <ul role="tablist" style={{ ...Tabs.defaultStyles.tabsRow }} className="sig-tabs__list">
+                {this.renderTabs()}
+              </ul>
+            }
             <Fragment>
               {this.renderActiveTabs()}
             </Fragment>

@@ -15,11 +15,9 @@ export default class Tab extends Component {
   render() {
     const { title, tabIndex, isActive } = this.props;
 
-    console.log('CLASS: ', this.props.activeClassName);
-
     return (
       <li
-        style={{...Tab.defaultStyles.tab, ...isActive && Tab.defaultStyles.active, ...this.props.style}}
+        style={{ ...Tab.defaultStyles.tab, ...isActive && Tab.defaultStyles.active, ...this.props.style }}
         className={['sig-tab', isActive ? ['sig-tab__active', this.props.activeClassName || ""].join(' ') : '', this.props.className || ''].join(' ')}
         role="presentation"
       >
@@ -30,7 +28,7 @@ export default class Tab extends Component {
           onKeyDown={e => this.props.handleKeyPress(e)}
           tabIndex={!isActive ? "-1" : "0"}
         >
-        {title}
+          {title}
         </a>
       </li>
     );

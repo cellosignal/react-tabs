@@ -32,6 +32,17 @@ export default function myComponent() {
 }
 ```
 
+## API
+There are a number of options available for targeting styles and providing data to the components.
+
+| Prop | Component | Description |
+|------|-----------|-------------|
+| `className` | `<Tabs>` | |
+| `contentClassName` | `<Tabs>` | |
+| `className` | `<Tab>` | |
+| `activeClassName` | `<Tab>` | |
+| `title` | `<Tab>` | |
+
 ## Development
 
 We use storybook for component development, to get up and running follow these steps:
