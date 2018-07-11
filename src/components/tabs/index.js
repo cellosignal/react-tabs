@@ -1,4 +1,3 @@
-/* @flow */
 import React, { Component, Fragment } from 'react';
 import { arrayOf, shape, string } from 'prop-types';
 import Provider from '../../provider';
