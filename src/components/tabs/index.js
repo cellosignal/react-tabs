@@ -4,6 +4,8 @@ import { arrayOf, shape, string } from 'prop-types';
 import Provider from '../../provider';
 import { Context } from '../../constants';
 import debounce from '../../helpers/debounce';
+import OpenIcon from '../../assets/open-icon';
+import CloseIcon from '../../assets/close-icon';
 
 export default class Tabs extends Component {
 
@@ -25,23 +27,31 @@ export default class Tabs extends Component {
       fontFamily: '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif',
     },
     button: {
-      display: 'none'
+      display: 'none',
     }
   };
 
   static mobileStyles = {
     button: {
-      display: 'block'
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
     }
   }
 
   static activeStyles = {
-    maxHeight: '9999px'
+    maxHeight: '9999px',
   }
 
   static disabledStyles = {
     maxHeight: 0,
-    overflow: 'hidden'
+    overflow: 'hidden',
+  }
+
+  static iconStyles = {
+    display: 'inline-flex',
+    alignItems: 'center',
+    paddingLeft: '10px',
   }
 
   componentWillMount() {
@@ -87,7 +97,7 @@ export default class Tabs extends Component {
   // to control its visibility when on Desktop. When on mobile however we remove the hidden attribute
   // and default to using classes for styling.
   renderActiveTabs = () => {
-    const { children, contentClassName, toggleClassName } = this.props;
+    const { children, contentClassName, toggleClassName, iconColor, hideIcons } = this.props;
 
     return React.Children.map(children, (child, index) => (
       <Context.Consumer>
@@ -109,6 +119,20 @@ export default class Tabs extends Component {
                   onClick={() => context.handleMobileClick(index)}
                 >
                   {children[index].props.title}
+                  {
+                    !hideIcons &&
+                    <div
+                      className="sig-tabs__toggle--icon"
+                      style={Tabs.iconStyles}
+                    >
+                      {
+                        active ?
+                          <CloseIcon color={iconColor} />
+                          :
+                          <OpenIcon color={iconColor} />
+                      }
+                    </div>
+                  }
                 </button>
                 <div style={active ? Tabs.activeStyles : Tabs.disabledStyles}>
                   {
