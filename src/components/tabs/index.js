@@ -7,7 +7,6 @@ import OpenIcon from '../../assets/open-icon';
 import CloseIcon from '../../assets/close-icon';
 
 export default class Tabs extends Component {
-
   constructor(props) {
     super(props);
 
@@ -66,8 +65,8 @@ export default class Tabs extends Component {
 
   // If user goes from mobile with all tabs closed we want to reset all tabs
   checkMobile = (props) => {
-    const { mobile } = props;
-    const mobileBp = mobile ? mobile : '768';
+    const { mobileBreakpoint } = props;
+    const mobileBp = mobileBreakpoint ? mobileBreakpoint : '768';
     this.setState({
       isMobile: window.matchMedia(`(max-width: ${mobileBp}px)`).matches
     });

@@ -43,6 +43,7 @@ There are a number of options available for targeting styles and providing data 
 | `activeClassName` | `<Tab>` | className added to the active tab |
 | `title` | `<Tab>` | *String*, the title of the Tab |
 | `toggleClassName` | `<Tabs>` | className added to the button, only on **mobile** |
+| `mobileBreakpoint` | `<Tabs>` | Mobile breakpoint in `px` |
 
 ## Development
 
