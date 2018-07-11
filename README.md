@@ -37,12 +37,12 @@ There are a number of options available for targeting styles and providing data 
 
 | Prop | Component | Description |
 |------|-----------|-------------|
-| `className` | `<Tabs>` | |
-| `contentClassName` | `<Tabs>` | |
-| `className` | `<Tab>` | |
-| `activeClassName` | `<Tab>` | |
-| `title` | `<Tab>` | |
-| `toggleClassName` | `<Tabs>` | |
+| `className` | `<Tabs>` | Add your classNames for styling, this adds it at the **top** level |
+| `contentClassName` | `<Tabs>` | className for wrapping your content |
+| `className` | `<Tab>` | className to add to **each** tab |
+| `activeClassName` | `<Tab>` | className added to the active tab |
+| `title` | `<Tab>` | *String*, the title of the Tab |
+| `toggleClassName` | `<Tabs>` | className added to the button, only on **mobile** |
 
 ## Development
 
