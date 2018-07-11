@@ -42,6 +42,7 @@ There are a number of options available for targeting styles and providing data 
 | `className` | `<Tab>` | |
 | `activeClassName` | `<Tab>` | |
 | `title` | `<Tab>` | |
+| `toggleClassName` | `<Tabs>` | |
 
 ## Development
 
