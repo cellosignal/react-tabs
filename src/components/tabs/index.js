@@ -106,9 +106,9 @@ export default class Tabs extends Component {
             return (
               <section
                 hidden={!this.state.isMobile && !active}
-                role="tab"
-                tabIndex="-1"
+                role="tabpanel"
                 id={`sigTabs${index}`}
+                aria-labelledby={`sigTabsTitle${index}`}
                 className={['sig-tabs__content', contentClassName || ''].join(' ')}
               >
                 <button
