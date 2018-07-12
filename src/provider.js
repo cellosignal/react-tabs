@@ -9,7 +9,7 @@ export default class Provider extends Component {
   };
 
   componentDidMount() {
-    this.panels = document.querySelectorAll('[id^="sigTabs"');
+    this.panels = document.querySelectorAll('[id^="sigTabs"]');
     this.tabs = document.querySelectorAll('a');
   }
 
