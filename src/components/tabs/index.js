@@ -57,6 +57,7 @@ export default class Tabs extends Component {
   }
 
   componentDidMount() {
+    console.log(this.props.context);
     window.addEventListener(
       'resize',
       debounce(() => this.checkMobile(this.props), 66)
@@ -65,11 +66,16 @@ export default class Tabs extends Component {
 
   // If user goes from mobile with all tabs closed we want to reset all tabs
   checkMobile = (props) => {
-    const { mobileBreakpoint } = props;
+    const { mobileBreakpoint, context } = props;
+    const { isMobile } = this.state;
     const mobileBp = mobileBreakpoint ? mobileBreakpoint : '768';
     this.setState({
       isMobile: window.matchMedia(`(max-width: ${mobileBp}px)`).matches
     });
+
+    // if (!isMobile) {
+    //   context.state.activeTabIndex = 0;
+    // }
   }
 
   // Renders the interactable buttons that sit at the top of the component
