@@ -17,14 +17,12 @@ export default class Provider extends Component {
     this.panels = document.querySelectorAll('[id^="sigTabs"]');
     this.tabs = document.querySelectorAll('a');
 
+    this.checkMobile();
+
     window.addEventListener(
       'resize',
       debounce(() => this.checkMobile(this.props), 66)
     );
-  }
-
-  componentWillMount() {
-    this.checkMobile();
   }
 
   checkMobile = () => {
