@@ -1,11 +1,5 @@
 ![React Accessible Tabs by Signal](images/readme-header.jpg)
 
-**Project to be moved to GitHub**
-
-| Maintained by   |
-|-----------------|
-| Jamie Halvorson |
-
 Declaritive, accessible tabs in React that collapse into accordions on mobile.
 
 This component uses the Context API, therefore there is a minimum requirement of **React 16.3**.
@@ -17,14 +11,14 @@ This component uses the Context API, therefore there is a minimum requirement of
 ## Usage
 
 ```javascript
-export default function myComponent() {
+const AwesomeTabs = () => {
   return (
     <Tabs>
       <Tab title="Tab One">
         <h1>Ain't this tidy?</h1>
         <p>I'm more text</p>
       </Tab>
-      <Tab>
+      <Tab title="Tab Two">
         <SomeOtherComponent  />
       </Tab>
     <Tabs>
