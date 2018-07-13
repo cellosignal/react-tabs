@@ -27,6 +27,9 @@ export default class Tab extends Component {
           href="#"
           onKeyDown={e => this.props.handleKeyPress(e)}
           tabIndex={!isActive ? "-1" : "0"}
+          role="tab"
+          aria-controls={`sigTabs${tabIndex}`}
+          id={`sigTabsTitle${tabIndex}`}
         >
           {title}
         </a>
