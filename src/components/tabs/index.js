@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react';
 import { arrayOf, shape, string } from 'prop-types';
 import Provider from '../../provider';
 import { Context } from '../../constants';
-import debounce from '../../helpers/debounce';
 import OpenIcon from '../../assets/open-icon';
 import CloseIcon from '../../assets/close-icon';
 
