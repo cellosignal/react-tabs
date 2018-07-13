@@ -7,15 +7,6 @@ import OpenIcon from '../../assets/open-icon';
 import CloseIcon from '../../assets/close-icon';
 
 export default class Tabs extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      isMobile: false,
-      prevSize: '',
-    }
-  }
-
   static defaultStyles = {
     tabsRow: {
       listStyleType: 'none',
@@ -52,32 +43,6 @@ export default class Tabs extends Component {
     paddingLeft: '10px',
   }
 
-  componentWillMount() {
-    this.checkMobile(this.props);
-  }
-
-  componentDidMount() {
-    console.log(this.props.context);
-    window.addEventListener(
-      'resize',
-      debounce(() => this.checkMobile(this.props), 66)
-    );
-  }
-
-  // If user goes from mobile with all tabs closed we want to reset all tabs
-  checkMobile = (props) => {
-    const { mobileBreakpoint, context } = props;
-    const { isMobile } = this.state;
-    const mobileBp = mobileBreakpoint ? mobileBreakpoint : '768';
-    this.setState({
-      isMobile: window.matchMedia(`(max-width: ${mobileBp}px)`).matches
-    });
-
-    // if (!isMobile) {
-    //   context.state.activeTabIndex = 0;
-    // }
-  }
-
   // Renders the interactable buttons that sit at the top of the component
   // These can only be interacted with on tablet and desktop devices.
   renderTabs = () => {
@@ -111,7 +76,7 @@ export default class Tabs extends Component {
             const active = tabIndex === index;
             return (
               <section
-                hidden={!this.state.isMobile && !active}
+                hidden={!context.state.isMobile && !active}
                 role="tabpanel"
                 id={`sigTabs${index}`}
                 aria-labelledby={`sigTabsTitle${index}`}
@@ -119,7 +84,7 @@ export default class Tabs extends Component {
               >
                 <button
                   className={['sig-tabs__toggle', toggleClassName || ''].join(' ')}
-                  style={{ ...this.state.isMobile ? Tabs.mobileStyles.button : Tabs.defaultStyles.button }}
+                  style={{ ...context.state.isMobile ? Tabs.mobileStyles.button : Tabs.defaultStyles.button }}
                   onClick={() => context.handleMobileClick(index)}
                 >
                   {children[index].props.title}
@@ -153,19 +118,28 @@ export default class Tabs extends Component {
   }
 
   render() {
+    const { className, tabListClassName, style, mobileBreakpoint } = this.props;
+
     return (
-      <Provider>
+      <Provider mobileBreakpoint={mobileBreakpoint}>
         <Fragment>
           <div
-            className={['sig-tabs', this.props.className || ''].join(' ')}
-            style={{ ...Tabs.defaultStyles.wrapper, ...this.props.style }}
+            className={['sig-tabs', className || ''].join(' ')}
+            style={{ ...Tabs.defaultStyles.wrapper, ...style }}
           >
-            {
-              !this.state.isMobile &&
-              <ul role="tablist" style={{ ...Tabs.defaultStyles.tabsRow }} className={['sig-tabs__list', this.props.tabListClassName || ''].join(' ')}>
-                {this.renderTabs()}
-              </ul>
-            }
+            <Context.Consumer>
+              {
+                (context) => (
+                  <Fragment>
+                    {!context.state.isMobile &&
+                      <ul role="tablist" style={{ ...Tabs.defaultStyles.tabsRow }} className={['sig-tabs__list', tabListClassName || ''].join(' ')}>
+                        {this.renderTabs()}
+                      </ul>
+                    }
+                  </Fragment>
+                )
+              }
+            </Context.Consumer>
             <Fragment>
               {this.renderActiveTabs()}
             </Fragment>
