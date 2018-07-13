@@ -1,0 +1,51 @@
+.c-tabs .sig-tabs__toggle  {
+    width: 100%;
+    background: DarkSlateGray;
+    color: white;
+    border-radius: 0;
+    box-shadow: none;
+    font-size: 16px;
+    padding: 10px;
+    border: 0;
+}
+
+.c-tabs section {
+    margin-bottom: 20px;
+}
+
+.c-tabs svg {
+    fill: white;
+}
+
+@media(min-width: 768px) {
+    .c-tabs .sig-tab {
+        border: 3px solid DarkSlateGray;
+        border-bottom: 0 !important;
+        margin-right: 10px;
+        border-radius: 6px 6px 0 0;
+    
+    }
+    
+    .c-tabs .sig-tab__active {
+        background: DarkSlateGray;
+    }
+    
+    .c-tabs .sig-tab a {
+        color: LightSlateGrey;
+        text-decoration: none;
+    }
+    
+    .c-tabs .sig-tab__active a {
+        color: white;
+    }
+    
+    .c-tabs .sig-tabs__list {
+        margin-bottom: 0;
+    }
+    
+    .c-tabs .sig-tabs__content {
+        border: 3px solid DarkSlateGray  !important;
+        padding: 20px;
+        border-radius: 0 6px 6px 6px;
+    } 
+}
