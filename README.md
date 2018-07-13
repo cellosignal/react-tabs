@@ -44,6 +44,7 @@ There are a number of options available for targeting styles and providing data 
 | `title` | `<Tab>` | *String*, the title of the Tab |
 | `toggleClassName` | `<Tabs>` | className added to the button, only on **mobile** |
 | `mobileBreakpoint` | `<Tabs>` | Mobile breakpoint in `px` |
+| `tabListClassName` | `<Tabs>` | className added to the tab list |
 
 ## Development
 

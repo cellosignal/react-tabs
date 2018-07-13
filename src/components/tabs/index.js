@@ -162,7 +162,7 @@ export default class Tabs extends Component {
           >
             {
               !this.state.isMobile &&
-              <ul role="tablist" style={{ ...Tabs.defaultStyles.tabsRow }} className="sig-tabs__list">
+              <ul role="tablist" style={{ ...Tabs.defaultStyles.tabsRow }} className={['sig-tabs__list', this.props.tabListClassName || ''].join(' ')}>
                 {this.renderTabs()}
               </ul>
             }
