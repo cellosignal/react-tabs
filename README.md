@@ -8,6 +8,12 @@ This component uses the Context API, therefore there is a minimum requirement of
 
 ![Desktop vs Mobile example](images/example.jpg)
 
+## Installation
+
+```
+npm i @cellosignal/react-tabs
+```
+
 ## Usage
 
 ```javascript
