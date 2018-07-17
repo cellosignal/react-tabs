@@ -2,7 +2,7 @@
 
 Declaritive, accessible tabs in React that collapse into accordions on mobile.
 
-This component uses the Context API, therefore there is a minimum requirement of **React 16.3**.
+This component uses the [Context API](https://reactjs.org/docs/context.html), therefore there is a minimum requirement of **React 16.3**.
 
 ## Example
 
