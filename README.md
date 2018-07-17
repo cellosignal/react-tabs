@@ -16,7 +16,7 @@ npm i @cellosignal/react-tabs
 
 ## Usage
 
-```javascript
+```jsx
 const AwesomeTabs = () => {
   return (
     <Tabs>
