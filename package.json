@@ -2,6 +2,9 @@
   "name": "@cellosignal/react-tabs",
   "version": "0.0.3",
   "description": "Acessible react tabs that collapse into an accordion on mobile",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.com/"
+  },
   "main": "index.js",
   "scripts": {
     "test": "jest",
