@@ -3,3 +3,4 @@ node_modules
 npm-debug.*
 build
 .DS_Store
+out*/
