@@ -60,4 +60,4 @@ We use storybook for component development, to get up and running follow these s
 
 ## Contributing
 
-Please see the [contrubting guidlines](CONTRIBUTING.md).
+Please see the [contributing guidlines](CONTRIBUTING.md).
