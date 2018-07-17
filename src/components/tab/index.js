@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { func, number } from 'prop-types';
+import { func, number, string } from 'prop-types';
 
 export default class Tab extends Component {
   static defaultStyles = {
@@ -17,8 +17,8 @@ export default class Tab extends Component {
 
     return (
       <li
-        style={{...Tab.defaultStyles.tab, ...isActive && Tab.defaultStyles.active, ...this.props.style}}
-        className={['sig-tab', isActive ? 'sig-tab__active' : '', this.props.className || ''].join(' ')}
+        style={{ ...Tab.defaultStyles.tab, ...isActive && Tab.defaultStyles.active, ...this.props.style }}
+        className={['sig-tab', isActive ? ['sig-tab__active', this.props.activeClassName || ""].join(' ') : '', this.props.className || ''].join(' ')}
         role="presentation"
       >
         <a
@@ -27,8 +27,11 @@ export default class Tab extends Component {
           href="#"
           onKeyDown={e => this.props.handleKeyPress(e)}
           tabIndex={!isActive ? "-1" : "0"}
+          role="tab"
+          aria-controls={`sigTabs${tabIndex}`}
+          id={`sigTabsTitle${tabIndex}`}
         >
-        {title}
+          {title}
         </a>
       </li>
     );
@@ -36,8 +39,8 @@ export default class Tab extends Component {
 }
 
 Tab.propTypes = {
-  onClick: func.isRequired,
-  title: func.isRequired,
-  tabIndex: number.isRequired,
+  onClick: func,
+  title: string,
+  tabIndex: number,
 };
 
