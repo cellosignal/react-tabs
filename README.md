@@ -2,7 +2,7 @@
 
 Declaritive, accessible tabs in React that collapse into accordions on mobile.
 
-This component uses the Context API, therefore there is a minimum requirement of **React 16.3**.
+This component uses the [Context API](https://reactjs.org/docs/context.html), therefore there is a minimum requirement of **React 16.3**.
 
 ## Example
 
@@ -16,7 +16,7 @@ npm i @cellosignal/react-tabs
 
 ## Usage
 
-```javascript
+```jsx
 const AwesomeTabs = () => {
   return (
     <Tabs>
@@ -60,4 +60,4 @@ We use storybook for component development, to get up and running follow these s
 
 ## Contributing
 
-Please see the [contrubting guidlines](CONTRIBUTING.md).
+Please see the [contributing guidlines](CONTRIBUTING.md).

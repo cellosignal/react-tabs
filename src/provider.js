@@ -18,7 +18,14 @@ export default class Provider extends Component {
     this.tabs = document.querySelectorAll('a');
 
     this.checkMobile();
+    this.handleDebouncedCheck();
+  }
 
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleDebouncedCheck, true);
+  }
+
+  handleDebouncedCheck = () => {
     window.addEventListener(
       'resize',
       debounce(() => this.checkMobile(this.props), 66)
